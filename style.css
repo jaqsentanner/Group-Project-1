@@ -1,0 +1,13 @@
+* {
+    background-color: aqua; 
+}
+
+#main {
+    background-color:white;
+
+}
+
+#news1, #news2, #news3 {
+    background-color: red;
+}
+
