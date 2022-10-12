@@ -3,11 +3,44 @@
 }
 
 #main {
-    background-color:white;
-
+    
 }
 
 #news1, #news2, #news3 {
-    background-color: red;
+    border: 5px solid black;
+    border-radius: 5px;
+    text-align:center;
+    margin: 10px;
+    
 }
 
+#news1:hover, #news2:hover, #news3:hover {
+    transform:scale(1.015);
+}
+
+#header1, #header2, #header3 {
+    font-size:50px;
+    padding: 3px;
+    margin-bottom: 10px;
+    
+}
+
+#body1, #body2, #body3 {
+    font-size: 25px;
+    padding: 3px;
+    margin-bottom: 10px;
+    
+}
+
+#url1, #url2, #url3 {
+    font-size: 15px;
+    font: white;
+    padding: 3px;
+    margin-bottom: 10px;
+    font-family: 'Courier New', Courier, monospace;
+
+} 
+
+#url1:hover, #url2:hover, #url3:hover {
+    transform:scale(1.05);
+}
