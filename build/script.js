@@ -1,243 +1,77 @@
-let ApiKey = "ba71b2eb740f7b5c3532bddb23348aed"
-
-let button = document.getElementById("submit")
-
-let retrieve;
-
-let queryURL;
-
-let zipcode;
-
-let city;
-
-let latitude;
-
-let longitude;
-
-let country;
-
-let weatherURL; 
-
 let weatherInfo = document.getElementById("editHere")
-
-let temp
-
-// Declare variables to edit DOM
-
-let date1
-let date2
-let date3
-
-let dateData1
-let dateData2
-let dateData3
-
-let edit1 = document.getElementById("edit1")
-let edit2 = document.getElementById("edit2")
-let edit3 = document.getElementById("edit3")
-
-let tempData1
-let tempData2
-let tempData3
-
-let tempEdit1 = document.getElementById("tempData1")
-let tempEdit2 = document.getElementById("tempData2")
-let tempEdit3 = document.getElementById("tempData3")
-
-let windNum1
-let windNum2
-let windNum3
-
-let wind1 = document.getElementById("windEdit1")
-let wind2 = document.getElementById("windEdit2")
-let wind3 = document.getElementById("windEdit3")
-
-let humData1
-let humData2
-let humData3
-
-let humidity1 = document.getElementById("humidityEdit1")
-let humidity2 = document.getElementById("humidityEdit2")
-let humidity3 = document.getElementById("humidityEdit3")
-
-// Placeholder text for site
 
 weatherInfo.innerText = "Search for a city to begin."
 
-// Event listener for button starts API
+$("#submit").click(function(){
 
-button.addEventListener("click", () => {
+    //clear divs from any previous search info
+    $("#date1").empty()
+    $("#date2").empty()
+    $("#date3").empty() 
+    $("#high1").empty()
+    $("#high2").empty()
+    $("#high3").empty()
+    $("#low1").empty()
+    $("#low2").empty()
+    $("#low3").empty()
+    $("#rain1").empty()
+    $("#rain2").empty()
+    $("#rain3").empty()
+    $("#condition1").empty()
+    $("#condition2").empty()
+    $("#condition3").empty()
+    $("#icon1").empty()
+    $("#icon2").empty()
+    $("#icon3").empty()
 
-    // Placeholder text
+    
+    //saving today tomorrow the-next-day to variables
+    var today = moment()
+    var today1 = moment().add(1, 'days')
+    var today2 = moment().add(2, 'days')
+
+    let weatherInfo = document.getElementById("editHere")
+
+    var cityInput= $("#searchBox").val();
+    
+    var weatherapi = "https://api.weatherapi.com/v1/forecast.json?q=" + cityInput + "&days=5&key=f8fb15b97c4f40bbb6014420220710"
 
     retrieve = document.getElementById("searchBox").value 
     weatherInfo.innerText = "Showing results for: " + retrieve
 
-    //Checking to see if input text is by zipcode or city
-    
-    if (isNaN(retrieve)){
-        console.log("Searching by city... ")
-        
-        // URL is set to be used in fetch
 
-        weatherURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + retrieve + ",us&appid=" + ApiKey
-        
-        // URL is called in a fetch function
-        
-        fetch(weatherURL)
-            .then(res => res.json())
+fetch(weatherapi) 
 
-            // Receive fetch data
+        .then(function (response) {
+            return response.json();
+    })
+        .then(function (data) {
+            console.log(data)
+            retrieve = document.getElementById("searchBox").value 
+            weatherInfo.innerText = "Showing results for: " + retrieve
+            //todays weather
+            $("#date1").append("<p>" + "Date: "+ today.format("MM-DD-YY")  + "</p>")
+            $("#high1").append("<p>" + "hi: " + data.forecast.forecastday[0].day.maxtemp_f + " °F" + "</p>")
+            $("#low1").append("<p>" + "low: " + data.forecast.forecastday[0].day.mintemp_f + " °F" + "</p>")
+            $("#rain1").append("<p>" + "rain chance: " + data.forecast.forecastday[0].day.daily_chance_of_rain + "%" + "</p>")
+            $("#condition1").append("<p>" + data.forecast.forecastday[0].day.condition.text + "</p>")
+            $("#icon1").append("<img src='https:" + data.forecast.forecastday[0].day.condition.icon + "'/>")
 
-            .then(data => {
+            //tomorrows weather
+            $("#date2").append("<p>" + "Date: "+ today1.format("MM-DD-YY") + "</p>")
+            $("#high2").append("<p>" + "hi: " + data.forecast.forecastday[1].day.maxtemp_f + " °F" + "</p>")
+            $("#low2").append("<p>" + "low: " + data.forecast.forecastday[1].day.mintemp_f + " °F" + "</p>")
+            $("#rain2").append("<p>" + "rain chance: " + data.forecast.forecastday[1].day.daily_chance_of_rain + "%" + "</p>")
+            $("#condition2").append("<p>" + data.forecast.forecastday[1].day.condition.text + "</p>")
+            $("#icon2").append("<img src='https:" + data.forecast.forecastday[1].day.condition.icon + "'/>")
 
-                // Store SPECIFIC data for each day in a variables
-                
-                console.log(data)
-                city = data["name"]
-                
-                // Date
-
-                date1 = data["list"]["2"]["dt_txt"]
-                date2 = data["list"]["10"]["dt_txt"]
-                date3 = data["list"]["18"]["dt_txt"]
-                
-                // Temp
-
-                tempData1 = data["list"]["2"]["main"]["temp"]
-                tempData2 = data["list"]["10"]["main"]["temp"]
-                tempData3 = data["list"]["18"]["main"]["temp"]
-                
-                // Wind
-
-                windNum1 = data["list"]["2"]["wind"]["speed"]
-                windNum2 = data["list"]["10"]["wind"]["speed"]
-                windNum3 = data["list"]["18"]["wind"]["speed"]
-                
-                // Humidity
-
-                humData1 = data["list"]["2"]["main"]["humidity"]
-                humData2 = data["list"]["10"]["main"]["humidity"]
-                humData3 = data["list"]["18"]["main"]["humidity"]
-                
-                // Edit date HTML text
-                
-                edit1.innerText = date1
-                edit2.innerText = date2
-                edit3.innerText = date3
-                
-                // Edit temp HTML text
-                
-                tempEdit1.innerText = "Temp: " + tempData1
-                tempEdit2.innerText = "Temp: " + tempData2
-                tempEdit3.innerText = "Temp: " + tempData3
-                
-                // Edit wind HTML text
-                
-                wind1.innerText = "Wind: " + windNum1
-                wind2.innerText = "Wind: " + windNum2
-                wind3.innerText = "Wind: " + windNum3
-
-                // Edit humidity HTML text
-
-                humidity1.innerText = "Humidity: " + humData1 + "%"
-                humidity2.innerText = "Humidity: " + humData2 + "%" 
-                humidity3.innerText = "Humidity: " + humData3 + "%"
-            })
-
-    }
-    
-    else {
-
-        // Placeholder text
-
-        weatherInfo.innerText = "Showing results for: " + retrieve
-        console.log("Searching by zipcode... ")
-
-        // URL is set to be used in fetch
-
-        queryURL = "https://api.openweathermap.org/geo/1.0/zip?zip=" + retrieve + "&appid=" + ApiKey
-
-    // URL is called in a fetch function
-
-    fetch(queryURL)
-    .then(res => res.json())
-
-    // Receive fetch data
-
-    .then(data => {
-        
-        // Store each individual data in variables
-        
-        city = data["name"]
-        zipcode = data["zip"]
-        latitude = data["lat"]
-        longitude = data["lon"]
-        country = data["country"]
-        console.log("City: " + city)
-        console.log("Zipcode: " + zipcode)
-        console.log("Latitude: " + latitude)
-        console.log("Longitude: " + longitude)
-        console.log("Country: " + country)
-        weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + ApiKey
-        fetch(weatherURL)  
-            .then(res => res.json())
-
-            // Receive fetch data
-
-            .then(data => {
-                console.log(data)
-
-                // Store SPECIFIC data for each day in a variables
-                
-                // Date
-
-                date1 = data["list"]["2"]["dt_txt"]
-                date2 = data["list"]["10"]["dt_txt"]
-                date3 = data["list"]["18"]["dt_txt"]
-                
-                // Temp
-
-                tempData1 = data["list"]["2"]["main"]["temp"]
-                tempData2 = data["list"]["10"]["main"]["temp"]
-                tempData3 = data["list"]["18"]["main"]["temp"]
-                
-                // Wind
-
-                windNum1 = data["list"]["2"]["wind"]["speed"]
-                windNum2 = data["list"]["10"]["wind"]["speed"]
-                windNum3 = data["list"]["18"]["wind"]["speed"]
-
-                // Humidity
-
-                humData1 = data["list"]["2"]["main"]["humidity"]
-                humData2 = data["list"]["10"]["main"]["humidity"]
-                humData3 = data["list"]["18"]["main"]["humidity"]
-                
-                // Edit date HTML text
-                
-                edit1.innerText = date1
-                edit2.innerText = date2
-                edit3.innerText = date3
-                
-                // Edit temp HTML text
-                
-                tempEdit1.innerText = "Temp: " + tempData1
-                tempEdit2.innerText = "Temp: " + tempData2
-                tempEdit3.innerText = "Temp: " + tempData3
-                
-                // Edit wind HTML text
-                
-                wind1.innerText = "Wind: " + windNum1
-                wind2.innerText = "Wind: " + windNum2
-                wind3.innerText = "Wind: " + windNum3
-
-                // Edit humidity HTML text
-
-                humidity1.innerText = "Humidity: " + humData1 + "%"
-                humidity2.innerText = "Humidity: " + humData2 + "%"
-                humidity3.innerText = "Humidity: " + humData3 + "%"
-            })
-    })  
-    }    
-})
+            //next days weather
+            $("#date3").append("<p>" + "Date: "+ today2.format("MM-DD-YY") + "</p>")
+            $("#high3").append("<p>" + "hi: " + data.forecast.forecastday[2].day.maxtemp_f + " °F" + "</p>")
+            $("#low3").append("<p>" + "low: " + data.forecast.forecastday[2].day.mintemp_f + " °F" + "</p>")
+            $("#rain3").append("<p>" + "rain chance: " + data.forecast.forecastday[2].day.daily_chance_of_rain + "%" + "</p>")
+            $("#condition3").append("<p>" + data.forecast.forecastday[2].day.condition.text + "</p>")
+            $("#icon3").append("<img src='https:" + data.forecast.forecastday[2].day.condition.icon + "'/>")
+            
+        })
+    })
