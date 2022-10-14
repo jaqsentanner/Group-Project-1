@@ -44,3 +44,20 @@
 #url1:hover, #url2:hover, #url3:hover {
     transform:scale(1.05);
 }
+
+.search {
+    display:flex;
+    justify-content: center;
+    
+}
+
+#input {
+    background-color:white;
+    margin: 5px;
+}
+
+#submit {
+    border: 1px solid black;
+    margin: 5px;
+    padding: 2px;
+}

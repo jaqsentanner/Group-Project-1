@@ -38,3 +38,23 @@ function newsAPI () {
 }
 
 newsAPI()
+
+var weatherURL = 'http://api.weatherapi.com/v1/current.json?key=770c8625070148199b402851221410&q=London'
+
+function weatherAPI () {
+    
+    fetch (weatherURL)
+
+    .then (function (response2) {
+        return response2.json();
+        
+    })
+
+    .then (function (data2){
+        console.log(data2);
+    })
+
+
+}
+
+weatherAPI()
