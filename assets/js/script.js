@@ -87,11 +87,17 @@ fetch(weatherapi)
         var cityInput= $("searchBox").val();
         localStorage.getItem("searchBox", cityInput);
         
-        
+        window.addEventListener('load', () => {
+            const zip = document.querySelector('#searchBox');
+            const save = localStorage.getItem("searchBox", cityInput) || '';
+
+            zip.value = save;
+        })
         
     
     }
     
     display();
-    
+
+
 
