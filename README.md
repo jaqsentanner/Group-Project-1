@@ -12,11 +12,11 @@ This project challenged every member of our team in new ways and brought us toge
 
 ## Future Development
 
-In our next iteration of "E News" we plan on implementing Matt's hourly weather forecasting feature into the live version of our application. Additionally, Jesus is designing a "favorite news" side panel that can utilize Tai's local storage feature. We plan to roll both of these out in the next update. 
+In our next iteration of "E News" we plan on implementing Matt's hourly weather forecasting feature into the live version of our application. Additionally, Jesus is designing a "favorite news" side panel that can utilize Tai & Jaqsen's local storage feature that currently only holds previous zip code entry. We plan to roll both of these out in the next update. 
 
 ## Contributions
 
-Tai Yang - Local storage, Wireframe, concepts
+Tai Yang & Jaqsen Meyer - Local storage, Wireframe, concepts
 
 Jesus Hernandez - Tailwind, CSS, concepts
 
