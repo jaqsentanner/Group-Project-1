@@ -54,7 +54,7 @@ fetch(weatherapi)
             weatherInfo.innerText = "Showing results for: " + retrieve
             //todays weather
             $("#date1").append("<p>" + "Date: "+ today.format("MM-DD-YY")  + "</p>")
-            $("#high1").append("<p>" + "hi: " + data.forecast.forecastday[0].day.maxtemp_f + " °F" + "</p>")
+            $("#high1").append("<p>" + "high: " + data.forecast.forecastday[0].day.maxtemp_f + " °F" + "</p>")
             $("#low1").append("<p>" + "low: " + data.forecast.forecastday[0].day.mintemp_f + " °F" + "</p>")
             $("#rain1").append("<p>" + "rain chance: " + data.forecast.forecastday[0].day.daily_chance_of_rain + "%" + "</p>")
             $("#condition1").append("<p>" + data.forecast.forecastday[0].day.condition.text + "</p>")
@@ -62,7 +62,7 @@ fetch(weatherapi)
 
             //tomorrows weather
             $("#date2").append("<p>" + "Date: "+ today1.format("MM-DD-YY") + "</p>")
-            $("#high2").append("<p>" + "hi: " + data.forecast.forecastday[1].day.maxtemp_f + " °F" + "</p>")
+            $("#high2").append("<p>" + "high: " + data.forecast.forecastday[1].day.maxtemp_f + " °F" + "</p>")
             $("#low2").append("<p>" + "low: " + data.forecast.forecastday[1].day.mintemp_f + " °F" + "</p>")
             $("#rain2").append("<p>" + "rain chance: " + data.forecast.forecastday[1].day.daily_chance_of_rain + "%" + "</p>")
             $("#condition2").append("<p>" + data.forecast.forecastday[1].day.condition.text + "</p>")
@@ -70,7 +70,7 @@ fetch(weatherapi)
 
             //next days weather
             $("#date3").append("<p>" + "Date: "+ today2.format("MM-DD-YY") + "</p>")
-            $("#high3").append("<p>" + "hi: " + data.forecast.forecastday[2].day.maxtemp_f + " °F" + "</p>")
+            $("#high3").append("<p>" + "high: " + data.forecast.forecastday[2].day.maxtemp_f + " °F" + "</p>")
             $("#low3").append("<p>" + "low: " + data.forecast.forecastday[2].day.mintemp_f + " °F" + "</p>")
             $("#rain3").append("<p>" + "rain chance: " + data.forecast.forecastday[2].day.daily_chance_of_rain + "%" + "</p>")
             $("#condition3").append("<p>" + data.forecast.forecastday[2].day.condition.text + "</p>")
