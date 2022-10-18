@@ -34,6 +34,7 @@ $("#submit").click(function(){
 
     var cityInput= $("#searchBox").val();
     
+    
     var weatherapi = "https://api.weatherapi.com/v1/forecast.json?q=" + cityInput + "&days=5&key=f8fb15b97c4f40bbb6014420220710"
 
     retrieve = document.getElementById("searchBox").value 
@@ -47,7 +48,9 @@ fetch(weatherapi)
     })
         .then(function (data) {
             console.log(data)
-            retrieve = document.getElementById("searchBox").value 
+            retrieve = document.getElementById("searchBox").value
+            localStorage.setItem("searchBox", cityInput)
+            console.log(localStorage)
             weatherInfo.innerText = "Showing results for: " + retrieve
             //todays weather
             $("#date1").append("<p>" + "Date: "+ today.format("MM-DD-YY")  + "</p>")
@@ -73,5 +76,28 @@ fetch(weatherapi)
             $("#condition3").append("<p>" + data.forecast.forecastday[2].day.condition.text + "</p>")
             $("#icon3").append("<img src='https:" + data.forecast.forecastday[2].day.condition.icon + "'/>")
             
+            
+
         })
     })
+
+    function display() {
+
+        
+        var cityInput= $("searchBox").val();
+        localStorage.getItem("searchBox", cityInput);
+        
+        window.addEventListener('load', () => {
+            const zip = document.querySelector('#searchBox');
+            const save = localStorage.getItem("searchBox", cityInput) || '';
+
+            zip.value = save;
+        })
+        
+    
+    }
+    
+    display();
+
+
+

@@ -6,7 +6,7 @@ let headerText
 
 let newsImage
 
-let requestURL = 'https://api.thenewsapi.com/v1/news/top?api_token=LOZ2kRPGbswrCCTuKwToXbkTGoRhlr56KJ6xcvh3&language=en'
+let requestURL = 'https://api.thenewsapi.com/v1/news/top?api_token=1JHhYSZpbVMto5AgJ58VUygKJEFfTJrArZBoUqWC&language=en'
 
 let currentPage = 0
 
