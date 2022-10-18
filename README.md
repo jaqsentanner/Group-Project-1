@@ -28,7 +28,7 @@ Derek Helgoe & Jaqsen Meyer - News (thenewsapi.com)
 
 ## View Our Work Here ↓
 
-
+https://jaqsentanner.github.io/Group-Project-1/
 
 ## Application Screenshots ↓
 
