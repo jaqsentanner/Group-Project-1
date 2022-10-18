@@ -327,6 +327,15 @@ legend {
   padding: 0;
 }
 
+header {
+  text-align:center;
+  font-size: 50px;
+}
+
+header:hover {
+  transform:scale(1.10);
+}
+
 ol,
 ul,
 menu {
@@ -716,6 +725,8 @@ video {
 .bg-gray-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(107 114 128 / var(--tw-bg-opacity));
+  background-image: url(./balloon1.webp);
+  background-size: 2000px;
 }
 
 .bg-white {
