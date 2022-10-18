@@ -100,4 +100,21 @@ fetch(weatherapi)
     display();
 
 
+    var headClear = document.querySelector(".hmargin");
+    headClear.addEventListener("click", headerClear);
+
+    function headerClear() {
+        localStorage.removeItem("searchBox");
+        
+        const zip = document.querySelector('#searchBox');
+        
+
+        zip.value = "Enter City/Zipcode...";
+        
+
+    }
+
+
+
+
 
