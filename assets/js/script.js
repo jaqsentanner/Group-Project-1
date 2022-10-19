@@ -1,3 +1,9 @@
+//secret button 
+function play() {
+    var audio = document.getElementById("audio");
+    audio.play();
+  }
+  
 let weatherInfo = document.getElementById("editHere")
 
 weatherInfo.innerText = "Search for a city to begin."

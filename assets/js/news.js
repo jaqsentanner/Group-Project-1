@@ -44,7 +44,7 @@ nextButton.addEventListener("click", () => {
                 header1.innerText = headerText
                 image.src = newsImage
                 
-            }    
+            }  
         })
     }
     newsAPI()
